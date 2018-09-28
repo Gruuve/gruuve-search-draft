@@ -1,0 +1,47 @@
+.temp {
+    /*font-family: 'Francois One', sans-serif;*/
+    font-size: 50px;
+    font-family: 'Lobster', cursive;
+}
+
+.subtag {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 35px;
+}
+
+nav {
+  background-color:#3f51b5 ;
+}
+
+body{
+  background-color: #E0E1E0;
+}
+
+.card {
+  border-radius: 20px;
+  transition: transform .2s;
+}
+
+.card:hover {
+  -ms-transform: scale(1.02); /* IE 9 */
+  -webkit-transform: scale(1.02); /* Safari 3-8 */
+  transform: scale(1.02);
+}
+
+
+.hide {
+  visibility: hidden;
+}
+
+
+/*body {
+    background: url("https://raw.githubusercontent.com/Gruuve/engine-homepage/master/images/backimg1.png");
+    background-position: absolute; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+ }*/
+
+
+
+  
