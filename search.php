@@ -57,7 +57,7 @@
                       $qu = trim(preg_replace('/\s+/',' ', $qu));
                       $qu = str_replace(' ', '+', $qu);
 
-                      $url = "https://gruuve-main.herokuapp.com/api/users?q=".$qu;
+                      $url = "";
                       $json = file_get_contents($url);
                       $res = json_decode($json);
                       
