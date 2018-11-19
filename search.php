@@ -6,6 +6,7 @@
       <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>-->
       <!--<link rel="stylesheet" href="css/bootstrap.css">-->
+      <link rel="icon" href="https://raw.githubusercontent.com/Gruuve/icon-source/master/icong.png">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
       <link rel="stylesheet" href="css/custom.css">
@@ -54,14 +55,35 @@
                   if(isset($_POST['submit'])){    
 
                       $qu = $_POST['query'];
+                      $raw = $qu;
                       $qu = trim(preg_replace('/\s+/',' ', $qu));
                       $qu = str_replace(' ', '+', $qu);
 
-                      $url = "";
+                      $url = "https://gruuve-main.herokuapp.com/api/users?q=$qu";
                       $json = file_get_contents($url);
                       $res = json_decode($json);
                       
                       
+                      include("db.php");
+                      $q1 = "select * from websites where keywords like '%$raw%' order by clicks desc";
+                      $r1 = mysqli_query($con,$q1);
+
+                      while($ro1=mysqli_fetch_assoc($r1)){
+
+                        echo "<a href=\"update.php?id=$ro1[id]\">
+                                    <div class=\"card\">
+                                    <div class=\"card-content\">
+                                      <span class=\"card-title activator\" style=\"color: black;\">$ro1[header]<i class=\"material-icons right\">share</i></span>
+                                      <p style=\"color: black;\">$ro1[content]</p>
+                                      <div><p><img src=\"images/web.png\" height=\"20px\" width=\"20px\" style=\"margin-top:3px;\">
+                                        <a href=\"#\" style=\"margin: 5px;\">$ro1[link]</a></p></div>
+                                    </div>
+                                    </div>
+                             </a>";
+
+                      }
+
+
                       foreach($res as $obj){
                       
                       $title = $obj->title;
